@@ -205,7 +205,7 @@ def train_model(cfg: AppConfig, run_id: str, run_dir: Path, jsonl_logger, resume
             jsonl_logger.log(metric)
             insert_metric(Path(cfg.logging.sqlite_path), metric)
 
-    if cfg.artifacts.confusion_matrix:
+            if cfg.artifacts.confusion_matrix:
                 save_confusion_matrix(run_dir, labels, preds, Path(cfg.logging.sqlite_path))
 
             if val_acc > best_acc:
