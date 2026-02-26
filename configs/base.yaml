@@ -1,0 +1,52 @@
+run:
+  name: "geolgm-cifar"
+  output_dir: "runs"
+  notes: "Baseline GeoTagged CIFAR-10 run"
+
+dataset:
+  root: "data"
+  metadata_csv: "data/metadata.csv"
+  index_path: "data/index.csv"
+  image_size: 64
+  num_classes: 10
+  cache: true
+  cache_dir: "data/.cache"
+  region_filter: null
+  time_filter: null
+
+model:
+  name: "resnet18"
+  num_classes: 10
+  pretrained: false
+
+train:
+  batch_size: 64
+  epochs: 3
+  lr: 0.001
+  weight_decay: 0.0001
+  num_workers: 2
+  mixed_precision: false
+  grad_clip: null
+  eval_every: 1
+  save_every: 1
+  fail_skip_batch: true
+  seed: 42
+
+logging:
+  log_interval: 10
+  jsonl_path: "metrics.jsonl"
+  sqlite_path: "runs.db"
+
+artifacts:
+  save_plots: true
+  confusion_matrix: true
+
+profiling:
+  enabled: true
+  gpu_stats: false
+
+distributed:
+  enabled: false
+  backend: "nccl"
+  shard_id: 0
+  num_shards: 1
