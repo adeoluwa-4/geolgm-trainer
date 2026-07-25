@@ -2,8 +2,8 @@
 __pycache__/
 .pytest_cache/
 .DS_Store
-data/
-runs/
-runs.db
-.torch/
+/data/
+/runs/
+/runs.db
+/.torch/
 src/geolgm_trainer.egg-info/
