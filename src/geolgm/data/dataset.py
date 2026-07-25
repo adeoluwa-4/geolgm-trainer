@@ -26,12 +26,13 @@ class GeoImageDataset(Dataset):
         self.index = pd.read_csv(index_path)
         self.meta = pd.read_csv(data_root / "metadata.csv")
         self.index = self.index[self.index["split"] == split].reset_index(drop=True)
-        self.transforms = build_transforms(image_size)
+        self.transforms = build_transforms(image_size, split)
         self.cache = cache
         self.cache_dir = cache_dir
         self.cache_hits = 0
         self.cache_misses = 0
         self.median_lat = float(self.meta["lat"].median()) if len(self.meta) else 0.0
+        self.meta_by_path = self.meta.set_index("image_path").to_dict("index")
 
     def __len__(self) -> int:
         return len(self.index)
@@ -54,5 +55,5 @@ class GeoImageDataset(Dataset):
             if self.cache:
                 save_cached(self.cache_dir, rel_path, image_tensor)
 
-        meta_row = self.meta[self.meta["image_path"] == rel_path].iloc[0].to_dict()
+        meta_row = self.meta_by_path[rel_path]
         return image_tensor, label, meta_row
