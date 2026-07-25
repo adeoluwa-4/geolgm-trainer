@@ -7,7 +7,7 @@ dataset:
   root: "data"
   metadata_csv: "data/metadata.csv"
   index_path: "data/index.csv"
-  image_size: 64
+  image_size: 128
   num_classes: 10
   cache: true
   cache_dir: "data/.cache"
@@ -17,16 +17,16 @@ dataset:
 model:
   name: "resnet18"
   num_classes: 10
-  pretrained: false
+  pretrained: true
 
 train:
-  batch_size: 64
-  epochs: 3
-  lr: 0.001
+  batch_size: 32
+  epochs: 8
+  lr: 0.0003
   weight_decay: 0.0001
   num_workers: 2
   mixed_precision: false
-  grad_clip: null
+  grad_clip: 1.0
   eval_every: 1
   save_every: 1
   fail_skip_batch: true
