@@ -1,4 +1,7 @@
 .venv/
+.env
+.env.*
+!.env.example
 __pycache__/
 .pytest_cache/
 .DS_Store
@@ -7,3 +10,7 @@ __pycache__/
 /runs.db
 /.torch/
 src/geolgm_trainer.egg-info/
+*.pem
+*.key
+*.p8
+*.p12
