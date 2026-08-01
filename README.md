@@ -1,12 +1,12 @@
 # GeoLGM Trainer
 
-GeoLGM Trainer is a config-driven PyTorch training system for image classification with geospatial-style metadata. It demonstrates the infrastructure around repeatable model training: validation, indexing, caching, checkpointing, experiment tracking, profiling, evaluation slices, artifact management, and a Streamlit dashboard.
+GeoLGM Trainer is a config driven PyTorch training system for image classification with geospatial style metadata. It demonstrates the infrastructure around repeatable model training: validation, indexing, caching, checkpointing, experiment tracking, profiling, evaluation slices, artifact management, and a Streamlit dashboard.
 
 ## Why this project exists
 
 Training code is only one part of a reliable ML system. GeoLGM focuses on the operational layer needed to reproduce runs, recover from interruption, inspect artifacts, and compare performance across regions and time buckets.
 
-The included example uses CIFAR-10 images with synthetic location and timestamp metadata around San Francisco. It is a compact demonstration dataset, not a claim of real-world geolocation inference.
+The included example uses CIFAR-10 images with synthetic location and timestamp metadata around San Francisco. It is a compact demonstration dataset, not a claim of real world geolocation inference.
 
 ## Architecture
 
@@ -14,7 +14,7 @@ The included example uses CIFAR-10 images with synthetic location and timestamp 
 flowchart LR
     A["Images and metadata"] --> B["Validation"]
     B --> C["Sharded index and cache"]
-    C --> D["Config-driven PyTorch trainer"]
+    C --> D["Config driven PyTorch trainer"]
     D --> E["Checkpoints and artifacts"]
     D --> F["JSONL and SQLite tracking"]
     E --> G["Overall and sliced evaluation"]
@@ -24,13 +24,13 @@ flowchart LR
 
 ## Engineering highlights
 
-- Pydantic-backed YAML configuration with per-run snapshots
+- Pydantic backed YAML configuration with per run snapshots
 - ResNet-18 and compact CNN model options
-- ImageNet normalization and pretrained-model support
-- Resume-safe checkpoints and artifact directories
+- ImageNet normalization and pretrained model support
+- Resume safe checkpoints and artifact directories
 - JSONL metric logs plus SQLite run metadata
 - Dataset validation, deterministic indexing, sharding, and parallel preprocessing
-- Overall accuracy plus region and time-bucket evaluation
+- Overall accuracy plus region and time bucket evaluation
 - Throughput and resource profiling
 - Streamlit experiment dashboard and FastAPI service boundary
 - Pytest coverage and GitHub Actions CI
@@ -86,7 +86,7 @@ src/geolgm/    data, models, training, tracking, and service code
 scripts/       dataset generation, preprocessing, and artifact helpers
 dashboards/    Streamlit run explorer
 tests/         configuration, validation, database, and artifact tests
-.github/       continuous-integration workflow
+.github/       continuous integration workflow
 ```
 
 ## Verification
@@ -100,5 +100,5 @@ GitHub Actions installs the package on Python 3.11 and runs the same test suite 
 ## Limitations and next steps
 
 - The demonstration metadata is synthetic and should not be interpreted as real geolocation evidence.
-- Distributed-training flags are represented in configuration, but full multi-node orchestration remains future work.
-- Production use would require dataset-specific governance, monitoring, and infrastructure sizing.
+- Distributed training flags are represented in configuration, but full multi node orchestration remains future work.
+- Production use would require dataset specific governance, monitoring, and infrastructure sizing.
