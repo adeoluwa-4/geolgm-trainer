@@ -13,14 +13,9 @@ def main():
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--bucket", required=True)
     parser.add_argument("--endpoint", default=None)
-    parser.add_argument("--access-key", default=None)
-    parser.add_argument("--secret-key", default=None)
     args = parser.parse_args()
 
-    session = boto3.session.Session(
-        aws_access_key_id=args.access_key,
-        aws_secret_access_key=args.secret_key,
-    )
+    session = boto3.session.Session()
     s3 = session.client("s3", endpoint_url=args.endpoint) if args.endpoint else session.client("s3")
 
     run_dir = Path("runs") / args.run_id / "artifacts"
