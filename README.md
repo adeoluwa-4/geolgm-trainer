@@ -2,8 +2,12 @@
 
 ## What it does
 
-GeoLGM Trainer is a Python system for training image recognition models and keeping experiments organized. It checks data, trains a PyTorch model, saves progress, tracks results, and shows results in a dashboard.
+GeoLGM Trainer helps train image recognition models and keep experiments organized. It checks the data, trains a PyTorch model, saves progress, and shows results by place and time.
 
 ## What I built
 
-I built the training workflow, repeatable settings, checkpoints, tests, performance tracking, and location and time based result views. Install the package with `pip install -e .`, then use the `geolgm` commands in the project.
+I built the training workflow, repeatable settings, saved checkpoints, tests, result tracking, and dashboard views.
+
+## Link
+
+[Open the code](https://github.com/adeoluwa-4/geolgm-trainer)
